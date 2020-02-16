@@ -22,7 +22,7 @@ rm -r 01-from-scratch
 ```
 
 
-### **`01-from-scratch`** actual steps:
+### **`01-from-scratch`** steps 1 thru 7:
 
 ```sh
 # Step 1:
@@ -51,12 +51,12 @@ touch postcss.config.js
 mkdir css && touch css/tailwind.css
 
 
-# Step 8: Create the public/index.html file:
+# Step 7: Create the public/index.html file:
 mkdir public && touch public/index.html
 ```
 
 
-### Step ????: Create the `postcss.config.js` file.
+### Step 8: Add the following contents to the `postcss.config.js` file.
 ```js
 module.exports = {
   plugins: [
@@ -66,9 +66,16 @@ module.exports = {
 }
 ```
 
-### Step ???: Create the `css/tailwind.css` file.
+### Step 9: Add the following contents to the `css/tailwind.css` file.
 
-### Step 6: Add the build script to `package.json`:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+
+### Step 10: Add the build script *within* the `package.json` file:
 
 ```json
  "scripts": {
@@ -76,14 +83,33 @@ module.exports = {
   },
 ```
 
+### Step 11: Add the following contents to the `public/index.html` file.
+```html
+<html lang="en">
 
+    <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>Vos Machsts</title>
+          <link rel="stylesheet" href="/build/tailwind.css">
+    </head>
+
+    <body>
+        <h1 class="text-4xl font-bold text-center text-blue-500">Hello world!</h1>
+    </body>
+
+</html>
+```
+
+
+### Steps 12 and 13:
 
 ```sh
-
-# Step 7: Run the build.
+# Step 12: Run the build.
 npm run build
 
-# Step 10: Start `live-server` on the `public` dir:
+# Step 13: Start `live-server` on the `public` dir:
 live-server public
 ```
 
